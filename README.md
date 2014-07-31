@@ -12,6 +12,3 @@ CGwing_analyses_final_2014.html	-		Html document produced by 'Knitting' the Rmd 
 Cricket_Wing_LMs.csv			-		datasheet of landmark coordinates from wing images
 
 CGCricketCallMeasures.csv		-		datasheet of call structure measures
-
-Cricket_Wing_Photos.zip			-		archive containing the original, unprocessed wing images
-
