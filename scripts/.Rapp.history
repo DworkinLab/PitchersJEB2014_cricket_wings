@@ -1,0 +1,8 @@
+getwd()
+library(knit)
+library(knitr)
+getwd()
+dir()
+knit("CGwing_analyses_final_2014.Rmd", output="../output/")
+purl("CGwing_analyses_final_2014.Rmd")
+knit2html("CGwing_analyses_final_2014.Rmd")

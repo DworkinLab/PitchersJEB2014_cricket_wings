@@ -163,13 +163,13 @@ Now we shall read in the data and perform data hygiene & sanity checks. After re
 ##### read in and munge the data #####
 ######################################
 
-# NB:– MAKE SURE TO CHANGE THIS LINE TO *YOUR* WORKING DIRECTORY!
-setwd( "/Volumes/Old_HD/DocStore/=WORK=/Cricket_Wings/" )
+# NB:– MAKE SURE TO CHANGE THIS LINE TO *YOUR* WORKING DIRECTORY! We currently have it set assuming you start in the directory.
+setwd( "./" )
 
-landmarks <- read.csv( "Cricket_Wing_LMs.csv" )
+landmarks <- read.csv( "../data/Cricket_Wing_LMs.csv" )
 names(landmarks)
 
-calls <- read.csv( "CGCricketCallMeasures.csv" )
+calls <- read.csv( "../data/CGCricketCallMeasures.csv" )
 names(calls)
 
 length( intersect( landmarks$Male.code, calls$ID ))

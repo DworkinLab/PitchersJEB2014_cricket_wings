@@ -1,3 +1,9 @@
+---
+output:
+  html_document:
+    keep_md: yes
+  pdf_document: default
+---
 **Functions and analyses for Pitchers et al. 2014**
 ***"The potential influence of morphology on the evolutionary divergence of an acoustic signal"***
 
@@ -21,30 +27,29 @@ other attached packages:
  [5] gdata_2.13.3     MCMCglmm_2.21    ape_3.1-2        coda_0.16-1     
  [9] lattice_0.20-29  Matrix_1.1-3     abind_1.4-0      geomorph_2.1    
 [13] rgl_0.93.996     boot_1.3-11      MASS_7.3-33      car_2.0-20      
+[17] knitr_1.6       
 
 loaded via a namespace (and not attached):
  [1] corpcor_1.6.6     deSolve_1.10-8    digest_0.6.4     
  [4] evaluate_0.5.5    formatR_0.10      geiger_2.0.3     
- [7] gtools_3.4.1      htmltools_0.2.4   jpeg_0.1-8       
-[10] knitr_1.6         mvtnorm_0.9-99992 nlme_3.1-117     
-[13] nnet_7.3-8        permute_0.8-3     Rcpp_0.11.2      
-[16] rmarkdown_0.2.49  stringr_0.6.2     subplex_1.1-3    
-[19] tensorA_0.36      tools_3.0.2       vegan_2.0-10     
-[22] yaml_2.1.13      
+ [7] gtools_3.4.1      jpeg_0.1-8        mvtnorm_0.9-99992
+[10] nlme_3.1-117      nnet_7.3-8        permute_0.8-3    
+[13] Rcpp_0.11.2       stringr_0.6.2     subplex_1.1-3    
+[16] tensorA_0.36      tools_3.0.2       vegan_2.0-10     
 
 Now we shall read in the data and perform data hygiene & sanity checks. After reading in both the calls data and the wing landmark data you ought to find that `533` crickets appear in both datasheets. The Landmark data for left wings are then reflected so that all wings appear to be right wings, and missing landmarks are replaced with values estiamted from the mean configuration. The landmark configurations for two individuals (LG_AC14 & LG_KL08) seem to have been misrecorded, since they do not appear to be wing-shaped, and so we excluded them from analyses.
 
-![plot of chunk read_in_data_&_data_hygiene](./CGwing_analyses_final_2014_files/figure-html/read_in_data_&_data_hygiene.png) 
+![plot of chunk read_in_data_&_data_hygiene](figure/read_in_data_&_data_hygiene.png) 
 
 ***Morphological Analyses***
 
 Here we test for directional asymmetry. Firstly, we find that there is no evidence for asymmetry in wing size, i.e. left wings do not differ in size from right wings. In terms of shape however, we do find a significant effect of side (in a MANOVA), though the partial R^2^ of the side effect was `0.07`, i.e. only 7% of the variance in shape is explained by directional asymmetry. Since examining asymmetry was not our purpose in this study, and given the small size of this effect, we collapse the data by taking the mean shape within individuals.
 
-![plot of chunk test_for_directional_asymmetry](./CGwing_analyses_final_2014_files/figure-html/test_for_directional_asymmetry.png) 
+![plot of chunk test_for_directional_asymmetry](figure/test_for_directional_asymmetry.png) 
 
 Next, we test for differences in centroid size between generations and among populations. We found that the best model was `Csize ~ Pop + Gen + Pop_x_Gen`; including the interaction of population and generation. The ANOVA showed statistical support for the main effect of population, and for the interaction term. The plot to illustrate these differences (estimates ± SE) became Figure 5 in the MS.
 
-![plot of chunk testing_for_pop_x_gen_variation_in_size](./CGwing_analyses_final_2014_files/figure-html/testing_for_pop_x_gen_variation_in_size.png) 
+![plot of chunk testing_for_pop_x_gen_variation_in_size](figure/testing_for_pop_x_gen_variation_in_size.png) 
 
 We then tested for similar patterns of variation in wing *shape* between generations and among populations. We used a similar model, this time fitted as a MANOVA. Since we know from the previous analysis that size varies, we include size (and its interactions) in the model, giving us `SHAPE ~ Pop + Gen + Csize + Pop_x_Gen + Pop_x_Csize + Gen_x_Csize`. Since the MANOVAs can behave somewhat erratically when there is correlation among response variables, and shape data has such correlations by definition, we confirmed the results of the MANOVA using a permutation approach. We obtained the same pattern of support for the modelled effects from these two different approaches.
 
@@ -76,7 +81,7 @@ To begin with, we shall use a PLS analysis to examine covariation between call d
 
 We plotted the RV coefficients, along with their 95% confidence intervals and the 95% confidence regions on the null hypotheses in each case. This plot became Figure 6 in the MS.
 
-![plot of chunk plotting_size_shape_rv](./CGwing_analyses_final_2014_files/figure-html/plotting_size_shape_rv.png) 
+![plot of chunk plotting_size_shape_rv](figure/plotting_size_shape_rv.png) 
 
 Our approach to examining the covariance between call data and wing shape was similar; PLS analyses within populations and generations. However, since we already showed that wing size covaries with calls more stongly than would be predicted by chance, but not in all populations/both generations, we used residuals from our shape model rather than shape data itself.
 
@@ -88,7 +93,7 @@ Having estimated PLS axes within pop.s/gen.s we then calculated vector correlati
 
 As with the size-calls PLS's, we plotted the RV coefficients, along with their 95% confidence intervals and the 95% confidence regions on the null hypotheses in each case. This plot became Figure 7 in the MS.
 
-![plot of chunk plotting_shape_calls_rv](./CGwing_analyses_final_2014_files/figure-html/plotting_shape_calls_rv.png) 
+![plot of chunk plotting_shape_calls_rv](figure/plotting_shape_calls_rv.png) 
 
 The matrix of vector correlations among major axes looked like this:
 
@@ -122,7 +127,7 @@ We also wanted to examine allometry within pop.s/gen.s. This next code block mod
 
 Lastly, for Figure 6 in the MS we wanted to visualize the spread of shape variation among populations, and the interaction effect between populations and generations. This next code block calculates linear discriminant functions to best separate population/generations. It then plots the first 2 (i.e. those that account for the most variation) against each other and superimposes pop/gen means with error lines of length ±1 standard deviation.
 
-![plot of chunk discriminant_function_plot](./CGwing_analyses_final_2014_files/figure-html/discriminant_function_plot.png) 
+![plot of chunk discriminant_function_plot](figure/discriminant_function_plot.png) 
 
 ---
 
@@ -138,5 +143,5 @@ Having calculated PLS axes (above) for the between-population shape-calls covari
 
 Finally, this next code block plots the within-population, within-generation mean landmark coordinates for each population and connects the landmarks with lines to build up a net as a rough representation of the wing... and the variation present among them. These two plots were combined to produce Figure 4 in the MS.
 
-![plot of chunk wing_shape_variation_plot](./CGwing_analyses_final_2014_files/figure-html/wing_shape_variation_plot1.png) ![plot of chunk wing_shape_variation_plot](./CGwing_analyses_final_2014_files/figure-html/wing_shape_variation_plot2.png) 
+![plot of chunk wing_shape_variation_plot](figure/wing_shape_variation_plot1.png) ![plot of chunk wing_shape_variation_plot](figure/wing_shape_variation_plot2.png) 
 

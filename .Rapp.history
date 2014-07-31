@@ -1,0 +1,5 @@
+getwd()
+dir()
+setwd("./")
+getwd()
+q()
