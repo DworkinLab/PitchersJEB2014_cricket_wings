@@ -1,6 +1,7 @@
 **Functions and analyses for Pitchers et al. 2014 (Accepted at Journal of Evolutionary Biology).**
 ***"The potential influence of morphology on the evolutionary divergence of an acoustic signal"***
 
+note: To see all R functions that have been run examine either the `.R` or `.Rmd` files in this repository (/scripts).
 
 If you re-run our analyses, you may find that your experience varies somehwat if you are using different versions of **R** or of the packages we use. The following details the versions we used.
 
