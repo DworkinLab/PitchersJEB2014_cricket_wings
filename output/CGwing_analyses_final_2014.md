@@ -1,16 +1,8 @@
----
-output:
-  html_document:
-    keep_md: yes
-  pdf_document: default
----
-**Functions and analyses for Pitchers et al. 2014**
+**Functions and analyses for Pitchers et al. 2014 (Accepted at Journal of Evolutionary Biology).**
 ***"The potential influence of morphology on the evolutionary divergence of an acoustic signal"***
 
 
-
-
-If you re-run our analyses, you may find that your experience varies if you are using different versions of **R** or of the packages we use. The following details the versions we used.
+If you re-run our analyses, you may find that your experience varies somehwat if you are using different versions of **R** or of the packages we use. The following details the versions we used.
 
 R version 3.0.2 (2013-09-25)
 Platform: x86_64-apple-darwin10.8.0 (64-bit)
@@ -37,7 +29,9 @@ loaded via a namespace (and not attached):
 [13] Rcpp_0.11.2       stringr_0.6.2     subplex_1.1-3    
 [16] tensorA_0.36      tools_3.0.2       vegan_2.0-10     
 
-Now we shall read in the data and perform data hygiene & sanity checks. After reading in both the calls data and the wing landmark data you ought to find that `533` crickets appear in both datasheets. The Landmark data for left wings are then reflected so that all wings appear to be right wings, and missing landmarks are replaced with values estiamted from the mean configuration. The landmark configurations for two individuals (LG_AC14 & LG_KL08) seem to have been misrecorded, since they do not appear to be wing-shaped, and so we excluded them from analyses.
+Now we shall read in the data and perform data hygiene & sanity checks. After reading in both the calls data and the wing landmark data you ought to find that `533` crickets appear in both datasheets. The Landmark data for left wings are then reflected so that all wings appear to be right wings, and missing landmarks are replaced with values estiamted from the mean configuration. 
+
+The landmark configurations for two individuals (LG_AC14 & LG_KL08) seem to have been misrecorded, since they do not appear to be wing-shaped, and so we excluded them from further analyses.
 
 ![plot of chunk read_in_data_&_data_hygiene](figure/read_in_data_&_data_hygiene.png) 
 
